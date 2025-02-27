@@ -1,25 +1,19 @@
-import React, { FC, useMemo } from "react";
+import React from "react";
 import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react";
-import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
-import {
-  WalletModalProvider,
-  WalletDisconnectButton,
-  WalletMultiButton,
-} from "@solana/wallet-adapter-react-ui";
-import { clusterApiUrl } from "@solana/web3.js";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 
 // Default styles that can be overridden by your app
 import "@solana/wallet-adapter-react-ui/styles.css";
 import "./App.css";
 import Airdrop from "./Airdrop";
-
+const devnetendpoint =
+  "https://magical-capable-scion.solana-devnet.quiknode.pro/f0fafd3ed13c4959a408dc115af932dcd17bafa8"; // move this to env
 function App() {
   return (
-    <ConnectionProvider endpoint={process.env.REACT_APP_SOLANA_DEVNET_RPC}>
+    <ConnectionProvider endpoint={devnetendpoint}>
       <WalletProvider wallets={[]} autoConnect>
         <WalletModalProvider>
           <Airdrop />
